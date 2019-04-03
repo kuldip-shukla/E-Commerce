@@ -1,0 +1,74 @@
+<body>
+  <div class="container">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()"> 
+      <table style="margin: auto;">
+        <div class="form-group">
+          <tr>
+            <td>
+              <h3><u><b>Product Form</b></u></h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mdl-textfield mdl-js-textfield">
+                <input type="text" class="mdl-textfield__input" [class.in-valid]="productname.invalid && productname.touched" formControlName="productname">
+                <label class="mdl-textfield__label">Product Name</label>
+                <small [class.d-none]="productname.valid || productname.untouched" class="text-danger">Product-Name is required</small>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mdl-textfield mdl-js-textfield">
+                <input type="number" class="mdl-textfield__input" [class.in-valid]="price.invalid && price.touched" formControlName="price">
+                <label class="mdl-textfield__label">Price</label>
+                <small [class.d-none]="price.valid || price.untouched" class="text-danger">Price is required</small>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mdl-textfield mdl-js-textfield">
+                <img *ngIf="url" [src]="url" height="200"><br/>
+                <input type='file' formControlName="image" [class.in-valid]="image.invalid && image.touched" (change)="onSelectFile($event)" >
+                <small [class.d-none]="image.valid || image.untouched" class="text-danger">Image is required</small>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                <select class="form-control" (blur)="validateCategory(category.value)" (change)="validateCategory(category.value)" formControlName="category" [class.in-valid]="categoryHasError && category.touched">
+                  <option value="default">Select Category</option>
+                  <option *ngFor="let category of categories">{{category}}</option>
+                </select>
+                <small class="text-danger" [class.d-none]="!categoryHasError || category.untouched">Please choose a Category.</small>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input type="text" class="mdl-textfield__input" [class.in-valid]="feature.invalid && feature.touched" formControlName="feature">
+                  <label class="mdl-textfield__label">Feature</label>
+                  <small [class.d-none]="feature.valid || feature.untouched" class="text-danger">Feature is required</small>
+                  <div formArrayName="features" *ngFor="let feature of features.controls; let i = index">
+                    <input type="text" class="mdl-textfield__input"  [formControlName]="i">
+                  </div>
+                  <button type="button" class="btn btn-secondary btn-sm m-2" (click)="addFeatures()"><i style="font-size:150%;">+</i ></button>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="btn btn-success" type="submit" [disabled]="!productForm.valid || categoryHasError">Add</button>  
+              <button class="btn btn-danger" type="reset" style="margin-left:5%" routerLink="/home">Cancel</button>
+            </td>
+          </tr>
+        </div>
+      </table>       
+    </form>
+  </div>
+</body>

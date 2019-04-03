@@ -1,0 +1,28 @@
+<div class="container" >
+  <h3 style="text-align:center;"><b>My Cart </b></h3>        
+  <table   id="myTable" class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp" style="text-align-last: center;margin:auto;">
+    <tr>
+      <th>Product_ID</th>
+      <th class="dtl">Product_Name</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let cart of detail; let i =index">
+      <td>{{cart._id}}</td>
+      <td class="dtl">{{cart.productname}}</td>
+      <td>{{cart.price}}</td>
+      <td>
+        <button type="button" class="btn btn-success" routerLink="/payment">Buy Now!</button>
+        <button type="button" class="btn btn-danger" style="margin-left:5%;" routerLink="/payment">Remove</button>
+      </td>
+    </tr>
+    <tr data-ng-init="total=0;">
+      <td colspan="2">
+        <b>Total Price: </b>
+      </td>
+      <td>
+        {{total}}
+      </td>
+    </tr>
+  </table><br>
+</div>   

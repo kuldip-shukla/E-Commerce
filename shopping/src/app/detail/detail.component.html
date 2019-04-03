@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <style>
+      .demo-card-image.mdl-card {
+        width: 700px;
+        height: 500px;
+        /* background: url('../assets/apple2.jpg') center / cover; */
+      }
+      .demo-card-image > .mdl-card__actions {
+        height: 52px;
+        padding: 16px;
+        background: rgba(0, 0, 0, 0.2);
+      }
+      .demo-card-image__filename {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div *ngFor="let product of detail; let i=index">
+      <h3 style="text-align: center">{{product.productname}}</h3>
+      <div class="demo-card-image mdl-card mdl-shadow--2dp" [ngStyle]="{background: 'url(' + product.image + ') center/ contain no-repeat' }" style="margin: auto"></div><br>
+      <div style="margin-left:24%;margin-right: 24%">
+        <p><b>Price: </b>{{product.price}}/-</p>
+        <h5><b>Features: </b></h5>
+        <ul>
+          <li>{{product.feature}}</li>
+          <li *ngFor="let feature of product.features; let i=index">{{feature}}</li>
+        </ul>
+      </div>
+      <div style="text-align: center">
+          <button type="button" class="btn btn-danger" (click)="back()">Back</button>
+          <button type="button" class="btn btn-warning" style="margin-left: 0.5%;color: #fff" (click)="addToCart()" routerLink="/cart">Add to Cart</button>
+          <button type="button" class="btn btn-success" style="margin-left: 0.5%;" routerLink="/payment">Buy Now!</button>
+      </div>
+    </div>
+  </body>
+</html>

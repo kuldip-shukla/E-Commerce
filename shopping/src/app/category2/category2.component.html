@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <style>
+      .demo-card-square.mdl-card {
+        width: 320px;
+        height: 400px;
+      }
+      .demo-card-square > .mdl-card__title {
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid" >
+      <div class="row" style="text-align:-webkit-center;margin-left: 11.5%;margin-right: 11%;">
+        <div *ngFor="let product of productData | paginate: config ; let i=index" style="margin:1% 1% 1% 1%;">
+          <div class="demo-card-square mdl-card mdl-shadow--2dp" >
+            <div class="mdl-card__title mdl-card--expand"  [ngStyle]="{background: 'url(' + product.image + ') center/ contain no-repeat'}"></div>
+            <div>
+              <!-- class="mdl-card__title-text" -->
+              <h2 style="font-size:15px; color:black;">{{product.productname}}</h2>
+            </div>
+            <div class="mdl-card__supporting-text" style="font-size:15px; color: black">
+              <b>Price: </b>{{product.price}}/-
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <a style="background-color:crimson; color:white" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" [routerLink]="['/detail', product._id]" >
+                View Details
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <pagination-controls (pageChange)="pageChange($event)" class="my-pagination" align="center"></pagination-controls>
+    </div> 
+  </body>
+</html>

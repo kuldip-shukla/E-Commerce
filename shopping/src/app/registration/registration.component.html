@@ -1,0 +1,111 @@
+ <body>
+  <div class="container">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <table style="margin: auto;">
+        <div class="form-group">
+          <tr>
+            <td>
+              <h3><u><b>Registration Form</b></u></h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mdl-textfield mdl-js-textfield">
+                <input type="text" class="mdl-textfield__input" [class.in-valid]="name.invalid && name.touched" formControlName="name">
+                <label class="mdl-textfield__label">Name</label>
+                <small [class.d-none]="name.valid || name.untouched" class="text-danger">Name is required</small>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mdl-textfield mdl-js-textfield">
+                <input type="text" class="mdl-textfield__input" [class.in-valid]="email.invalid && email.touched" formControlName="email">
+                <label class="mdl-textfield__label">Email Id</label>
+                <small [class.d-none]="email.valid || email.untouched" class="text-danger">Email-Id is required</small>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mdl-textfield mdl-js-textfield">
+                <input type="password" class="mdl-textfield__input" [class.in-valid]="password.invalid && password.touched" formControlName="password">
+                <label class="mdl-textfield__label">Password</label>
+                <small [class.d-none]="password.valid || password.untouched" class="text-danger">Password is required</small>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mdl-textfield mdl-js-textfield">
+                <input type="number" class="mdl-textfield__input" [class.in-valid]="phone.invalid && phone.touched" formControlName="phone">
+                <label class="mdl-textfield__label">Contact No.</label>
+                <small [class.d-none]="phone.valid || phone.untouched" class="text-danger">Contact No. is required</small>        
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group">
+                <select class="form-control" (blur)="validateRole(role.value)" (change)="validateRole(role.value)" formControlName="role" [class.in-valid]="roleHasError && role.touched">
+                  <option value="default">Select Role</option>
+                  <option *ngFor="let role of roles">{{role}}</option>
+                </select>
+                <small class="text-danger" [class.d-none]="!roleHasError || role.untouched">Please choose a Role.</small>
+              </div>
+            </td>
+          </tr>
+          <div formGroupName="address"> 
+            <tr>
+              <td>
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input type="text" class="mdl-textfield__input" [class.in-valid]="street.invalid && street.touched" formControlName="street">
+                  <label class="mdl-textfield__label">Street</label>
+                  <small [class.d-none]="street.valid || street.untouched" class="text-danger">Street is required</small>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input type="text" class="mdl-textfield__input" [class.in-valid]="city.invalid && city.touched" formControlName="city">
+                  <label class="mdl-textfield__label">City</label>
+                  <small [class.d-none]="city.valid || city.untouched" class="text-danger">City is required</small>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input type="text" class="mdl-textfield__input" [class.in-valid]="state.invalid && state.touched" formControlName="state">
+                  <label class="mdl-textfield__label">State</label>
+                  <small [class.d-none]="state.valid || state.untouched" class="text-danger">State is required</small>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input type="number" class="mdl-textfield__input" [class.in-valid]="pincode.invalid && pincode.touched" formControlName="pincode">
+                  <label class="mdl-textfield__label">Pincode</label>
+                  <small [class.d-none]="pincode.valid || pincode.untouched" class="text-danger">Pincode is required</small>
+                </div>
+              </td>
+            </tr>
+          </div>
+          <tr>
+            <td>
+              <div class="g-recaptcha" data-sitekey="6Lcow5gUAAAAACEc2gOtxirTGFgMFG_ckMeHu1v0"></div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="btn btn-success" type="submit" [disabled]="!registrationForm.valid">Register</button>&nbsp;  
+              <button class="btn btn-danger" type="reset" routerLink="/login">Cancel</button>
+            </td>
+          </tr>
+        </div>
+      </table>
+    </form>
+  </div>
+</body>
