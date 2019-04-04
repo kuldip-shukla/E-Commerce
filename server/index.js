@@ -25,5 +25,6 @@ app.get('/detail/:id',(req,res)=>userAction.detail(req,res));
 app.get('/user/:id',(req,res)=>userAction.user(req,res));
 app.post('/cart',(req,res)=>userAction.cart(req,res));
 app.get('/getCart/:id',(req,res)=>userAction.getCart(req,res));
+app.get('/deleteCart/:id',(req,res)=>userAction.deleteCart(req,res));
 
 app.listen(port,console.log("Server Running on",port));

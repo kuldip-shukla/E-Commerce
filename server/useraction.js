@@ -85,5 +85,12 @@ module.exports = {
             if(err) res.json(err);
             else res.json(data);
         });
+    },
+    "deleteCart": function(req,res){
+        var Model = mongoose.model("cart")
+        Model.findByIdAndRemove({_id : req.params.id},function (err, data){
+            if(err) res.json(err);
+            else res.json(data);
+        });
     }
 }

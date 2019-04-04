@@ -13,7 +13,7 @@
       <td>{{cart.price}}</td>
       <td>
         <button type="button" class="btn btn-success" routerLink="/payment">Buy Now!</button>
-        <button type="button" class="btn btn-danger" style="margin-left:5%;" routerLink="/payment">Remove</button>
+        <button type="button" class="btn btn-danger" style="margin-left:5%;" (click)="deleteCart(cart_id)">Remove</button>
       </td>
     </tr>
     <tr data-ng-init="total=0;">
@@ -21,7 +21,7 @@
         <b>Total Price: </b>
       </td>
       <td>
-        {{total}}
+        {{sum()}}
       </td>
     </tr>
   </table><br>

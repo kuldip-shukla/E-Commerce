@@ -17,21 +17,33 @@ export class CartComponent implements OnInit {
   cart:any[];
   userid:any;
   productid:any[]=[];
-  // productname:any= "nokia";
-  // price:any = 7000;
-  constructor(private _userService: UserService,private route: ActivatedRoute,private _location: Location) { }
+  total:Number = 0;
+  cart_id:any;
+  constructor(private _userService: UserService,private _location: Location) { }
 
   ngOnInit() {
     this.userid = localStorage.getItem("id")
       this._userService.getCart(this.userid).subscribe((res:any) => {
-        
-        // this.detail.push(res);
-        // console.log(res)
-        // for(let i=0;i<this.detail.length;i++){
-          res.map((data)=>{
-            console.log(data.product_id)
-            this.detail.push(data.product_id)
-          })        
+        res.map((data)=>{
+          this.cart_id = data._id
+          this.detail.push(data.product_id)
+        })    
       });
+  }
+
+  sum(){
+    for(let i=0;i<this.detail.length;i++){
+      this.total += this.detail[i].price
     }
+    return this.total
+  }
+
+  deleteCart(id){
+    this._userService.deleteCart(id)
+    .subscribe((result)=>{
+      this.ngOnInit()
+    },(err)=>{
+      console.log(err)
+    }) 
+  }
 }

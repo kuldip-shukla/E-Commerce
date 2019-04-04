@@ -84,6 +84,13 @@ export class UserService {
     )
   }
 
+  deleteCart(id){
+    return this._http.get(`${this.url}/deleteCart/${id}`)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
   upload(images: any){
     var formData = new FormData()
     formData.append('file',images)
