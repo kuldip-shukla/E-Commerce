@@ -45,11 +45,10 @@ export class DetailComponent implements OnInit {
     this.productid = localStorage.getItem("product_id")
     this._userService.cart(this.userid,this.productid)
       .subscribe((result)=>{
-        console.log(result)
-        // this.router.navigate(['login'])
+        this.router.navigate(['cart'])
       },(err)=>{
         console.log(err)
-        // this.router.navigate(['registration'])
+        this._location.back();
       }) 
   }
 }

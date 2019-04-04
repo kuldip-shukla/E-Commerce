@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-
-// declare var product:Array<any>
 
 @Component({
   selector: 'app-cart',
@@ -14,31 +10,30 @@ import { Location } from '@angular/common';
 export class CartComponent implements OnInit {
 
   detail:any[]=[];
-  cart:any[];
+  // cart:any[];
   userid:any;
   productid:any[]=[];
   total:Number = 0;
-  cart_id:any;
-  constructor(private _userService: UserService,private _location: Location) { }
+  cart:any[]=[];
+  constructor(private _userService: UserService) { }
 
   ngOnInit() {
     this.userid = localStorage.getItem("id")
-      this._userService.getCart(this.userid).subscribe((res:any) => {
-        res.map((data)=>{
-          this.cart_id = data._id
-          this.detail.push(data.product_id)
-        })    
-      });
+    this._userService.getCart(this.userid).subscribe((res:any) => {
+      res.map((data)=>{
+        this.cart.push(data)
+      })    
+    });
   }
 
   sum(){
-    for(let i=0;i<this.detail.length;i++){
-      this.total += this.detail[i].price
+    for(let i=0;i<this.cart.length;i++){
+      this.total += this.cart[i].product_id.price
     }
     return this.total
   }
 
-  deleteCart(id){
+  deleteCart(id){ 
     this._userService.deleteCart(id)
     .subscribe((result)=>{
       this.ngOnInit()

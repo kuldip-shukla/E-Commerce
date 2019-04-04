@@ -65,18 +65,25 @@ const productSchema = new Schema({
 
 const purchaseSchema = new Schema({
     payment_id:{
-        type:String
+        type: Schema.Types.ObjectId
     },
     user_id:{
-        type:String
+        type: Schema.Types.ObjectId, ref: 'registration'
+    },
+    product_id:{
+        type: Schema.Types.ObjectId, ref: 'product'
     }
 },{
     versionKey: false
 })
 
 const cartSchema = new Schema({
-    product_id:{ type: Schema.Types.ObjectId, ref: 'product' },
-    user_id:{ type: Schema.Types.ObjectId, ref: 'registration' }
+    product_id:{ 
+        type: Schema.Types.ObjectId, ref: 'product' 
+    },
+    user_id:{ 
+        type: Schema.Types.ObjectId, ref: 'registration' 
+    }
 },{
     versionKey: false
 })

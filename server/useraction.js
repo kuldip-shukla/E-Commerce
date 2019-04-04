@@ -64,12 +64,11 @@ module.exports = {
         });
     },
     "payment": function(req,res){
-        var Model = mongoose.model("product")
-        let id = req.params.id;
-        Model.findById({_id : id},function (err, result){
-            if(err) res.json(err);
-            else res.json(result);
-        });
+        var Model = new model.purchase(req.body)
+        Model.save((err) => {
+            if(err){ console.log(err); return res.json({code:400, message:"Try again for Payment"})}
+            else return res.json({code:201, message:"Payment Successfully"})
+        })
     },
     'cart': async function(req,res){
         var Model = new model.cart(req.body)

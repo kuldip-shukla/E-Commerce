@@ -46,7 +46,8 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('role', this.role);
             localStorage.setItem('id', this.id);
           }
-          this._location.back();
+          // this._location.back();
+          this.router.navigate(['home']);
         },(err)=>{
           alert("Invalid Username or Password")
           this.router.navigate(['login']);

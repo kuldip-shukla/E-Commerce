@@ -16,6 +16,11 @@ export class UserService {
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
+
+  private extractData(res: Response) {
+    let body = res;
+    return body || { };
+  }
   
   registration(userData){
     return this._http.post<any>(`${this.url}/registration`,userData)
@@ -39,6 +44,13 @@ export class UserService {
     localStorage.removeItem('id');
   } 
 
+  user(id){
+    return this._http.get(`${this.url}/user/${id}`)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
   editData(id){
     return this._http.get(`${this.url}/edit/${id}`)
     .pipe(
@@ -60,6 +72,14 @@ export class UserService {
     .pipe(catchError(this.errorHandler))
   }
 
+  displayData(){
+    return this._http.post(`${this.url}/home`,{},this.httpOptions)
+    .pipe(
+      catchError(this.errorHandler),
+      map(this.extractData)
+    )
+  }
+
   product(productData){
     return this._http.post<any>(`${this.url}/addProduct`,productData)
     .pipe(
@@ -72,15 +92,15 @@ export class UserService {
       user_id: userid,
       product_id:productid
     }
-    console.log("obj",obj)
     return this._http.post<any>(`${this.url}/cart`,obj)
     .pipe(catchError(this.errorHandler))
   }
 
   getCart(id){
-    return this._http.get(`${this.url}/getCart/${id}`)
+    return this._http.post(`${this.url}/getCart/${id}`,{},this.httpOptions)
     .pipe(
-      catchError(this.errorHandler)
+      catchError(this.errorHandler),
+      map(this.extractData)
     )
   }
 
@@ -97,39 +117,25 @@ export class UserService {
     return this._http.post<any>(this.URL1,formData)
   }
 
-  private extractData(res: Response) {
-    let body = res;
-    return body || { };
-  }
-
   viewData(id){
     return this._http.get(`${this.url}/detail/${id}`)
     .pipe(
       catchError(this.errorHandler)
     )
-  }
+  } 
 
-  user(id){
-    return this._http.get(`${this.url}/user/${id}`)
-    .pipe(
-      catchError(this.errorHandler)
-    )
-  }
-
-  paymentData(id){
-    return this._http.get(`${this.url}/payment/${id}`)
+  paymentData(paymentid,userid,productid){
+    const obj = {
+      Payment_id: paymentid,
+      user_id: userid,
+      product_id:productid
+    }
+    return this._http.post(`${this.url}/payment`,obj)
     .pipe(
       catchError(this.errorHandler)
     )
   }
   
-  displayData(){
-    return this._http.post(`${this.url}/home`,{},this.httpOptions)
-    .pipe(
-      catchError(this.errorHandler),
-      map(this.extractData)
-    )
-  }
   errorHandler(error: HttpErrorResponse){
     return throwError(error);
   }

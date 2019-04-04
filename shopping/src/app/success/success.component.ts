@@ -22,12 +22,12 @@ export class SuccessComponent implements OnInit {
   city:any;
   state:any;
   pincode:any;
-
+  id:any;
   constructor(private route: ActivatedRoute, private _userService: UserService) { }
 
   ngOnInit() {
-    let id = localStorage.getItem('id');
-    this._userService.user(id).subscribe(result=>{
+    this.id = localStorage.getItem('id');
+    this._userService.user(this.id).subscribe(result=>{
       this.user.push(result);
       for(let i=0;i<this.user.length;i++){
         this.name = this.user[i].name
@@ -56,5 +56,13 @@ export class SuccessComponent implements OnInit {
         this.payment_id = params.paymentId
       })
     }
+    this.payment()
+  }
+
+  payment(){
+    this._userService.paymentData(this.payment_id,this.id,this.product_id)
+    .subscribe((res: any) => {
+      //code res
+    });
   }
 }

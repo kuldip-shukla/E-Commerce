@@ -49,7 +49,7 @@
     <div class="container-fluid">
       <li><a [routerLink]="['/home']">Home</a></li>
       <li class="dropdown">
-        <a  class="dropdown-toggle" data-toggle="dropdown">Category</a>
+        <a class="dropdown-toggle" data-toggle="dropdown">Category</a>
         <div class="dropdown-menu">
           <li><a [routerLink]="['/laptops']">Laptops</a></li>
           <li><a [routerLink]="['/mobiles']">Mobiles</a></li>
@@ -62,17 +62,22 @@
       <li><a href="#contact">Contact</a></li>
       <li><a href="#about">About</a></li>
       <div style="padding-left:80%; padding-top: 0.5%">
-        <li>
-          <button class="btn btn-default" [routerLink]="['/updateprofile']" *ngIf="checkAuthentication()"><img src="../../assets/profile.jpg" height="20" width="25"></button>
-          <!-- <img src="../../assets/profile.png" style="margin-left: 10%;" height="30" width="30" alt=""> -->
-        </li>
-        <li><button class="btn btn-success" [routerLink]="['/registration']" *ngIf="!checkAuthentication()">SignUp</button>
-          <button *ngIf="checkAuthentication()" style="margin-left: 10%;" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="items"></span></button> 
+        <li class="dropdown">
+          <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" *ngIf="checkAuthentication()"><img src="../../assets/profile.jpg" height="20" width="25"></button>
+          <div class="dropdown-menu">
+            <li><a [routerLink]="['/updateprofile']">Edit Profile</a></li>
+            <li><a [routerLink]="['/cart']">My Cart</a></li>
+            <li><a>My Orders</a></li>
+            <li><a (click)="logout()">Logout</a></li>
+          </div>
         </li>
         <li>
           <button *ngIf="!checkAuthentication()" class="btn btn-primary" style="margin-left: 10%;" [routerLink]="['/login']">LogIn</button>
-          <button *ngIf="checkAuthentication()" class="btn btn-primary" style="margin-left:10%;" (click)="logout()">Logout</button>
         </li>
+        <li><button class="btn btn-success" style="margin-left: 15%;" [routerLink]="['/registration']" *ngIf="!checkAuthentication()">SignUp</button>
+          <button *ngIf="checkAuthentication()" style="margin-left: 10%;" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="items"></span></button> 
+        </li>
+        
       </div>
     </div>
   </body>
