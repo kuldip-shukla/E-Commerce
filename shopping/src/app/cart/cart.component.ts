@@ -18,6 +18,8 @@ export class CartComponent implements OnInit {
   constructor(private _userService: UserService) { }
 
   ngOnInit() {
+    this.cart=[];
+    this.total = 0
     this.userid = localStorage.getItem("id")
     this._userService.getCart(this.userid).subscribe((res:any) => {
       res.map((data)=>{

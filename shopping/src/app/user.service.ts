@@ -9,7 +9,7 @@ import { catchError, map } from 'rxjs/operators';
 export class UserService {
 
   url = "http://192.168.0.138:8080"
-  URL1 = "http://66.70.179.133:8808/codezeros/uploadFile/common" 
+  URL1 = "http://3.18.139.243:8808/codezeros/uploadFile/common" 
   
   constructor(private _http: HttpClient) { }
 
