@@ -1,7 +1,31 @@
 <html>
+  <head>
+    <style>
+      @media screen and (min-width: 768px){
+        body {
+          width: 100%;
+        }
+        img{
+          margin-left:47%;
+          margin-right:47%;
+          margin-top: 3%;
+        }
+      }
+      @media screen and (max-width: 768px){
+        body {
+          width: 100%;
+        }
+        img{
+          margin-left:40%;
+          margin-right:40%;
+          margin-top: 3%;
+        }
+      }
+    </style>
+  </head>
   <body class="container">
-      <img style="margin-left:47%;margin-right:47%;margin-top: 3%;" src="../assets/failed.png" height="70" width="70">
-      <h2 style="color:red;text-align: center">Oops! Payment Failed</h2>
+    <img src="../assets/failed.png" height="70" width="70">
+    <h2 style="color:red;text-align: center">Oops! Payment Failed</h2>
     <table style="margin: auto;">
       <tr>
         <td>
@@ -11,23 +35,6 @@
             {{payment_id}}
         </td>
       </tr>
-      <!-- <tr>
-          <td >
-            <h3 style="color:green">Product Detail</h3>
-          </td>
-        </tr>
-        <tr>
-          <td>
-              <b>Product_ID: </b>
-          </td>
-          <td>{{productid}}</td>
-        </tr>
-        <tr>
-          <td>
-              <b>Product_Name: </b>
-          </td>
-          <td>{{productname}}</td>
-        </tr> -->
       <tr>
         <td >
           <h3 style="color:red">Buyer Detail</h3>

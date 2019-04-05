@@ -1,4 +1,15 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <style>
+    @media screen and (max-width: 767px){
+      body{
+        width: 100%;
+      }
+      .form-control,.g-recaptcha{
+        width:100%;
+      }
+    }
+  </style>
+</head>
  <body>
   <div class="container">
     <form [formGroup]="registrationForm"  VALUE="Refresh" (ngSubmit)="onSubmit()">
