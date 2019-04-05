@@ -1,5 +1,6 @@
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       .demo-card-square.mdl-card {
         width: 320px;
@@ -8,12 +9,17 @@
       .demo-card-square > .mdl-card__title {
         color: #fff;
       }
+      @media screen and (max-width: 768px){
+        .demo-card-square.mdl-card, .demo-card-square > .mdl-card__title   {
+          width: 100%;
+        }
+      }
     </style>
   </head>
   <body>
-    <div class="container-fluid" >
-      <div class="row" style="text-align:-webkit-center;margin-left: 11%;margin-right: 11%;">
-        <div *ngFor="let product of productData | paginate: config ; let i=index" style="margin:1% 1% 1% 1%;">
+    <div class="container" >
+      <div class="row" style="text-align:-webkit-center;margin-left:5%;margin-right: 5%;">
+        <div *ngFor="let product of productData | paginate: config ; let i=index" style="margin:0.5% 0.5% 0.5% 0.5%;">
           <div class="demo-card-square mdl-card mdl-shadow--2dp" >
             <div class="mdl-card__title mdl-card--expand"  [ngStyle]="{background: 'url(' + product.image + ') center/ contain no-repeat'}"></div>
             <div>

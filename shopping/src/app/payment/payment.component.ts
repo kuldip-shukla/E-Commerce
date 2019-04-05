@@ -47,7 +47,6 @@ export class PaymentComponent implements OnInit  {
   back(){
     this._location.back();
   }
-
  
   paypal(){
     let flag = localStorage.getItem('isLoggedIn')

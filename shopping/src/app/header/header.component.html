@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -42,11 +43,20 @@
       li.dropdown:hover > .dropdown-menu {
           display: block;
           
-      } 
+      }
+      @media screen and (max-width: 768px){
+        div, li {
+          width: 100%;
+        /* background: url('../assets/apple2.jpg') center / cover; */
+        }
+        div{
+          padding-left:0% 
+        }
+      }
     </style>
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container">
       <li><a [routerLink]="['/home']">Home</a></li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown">Category</a>
@@ -72,13 +82,12 @@
           </div>
         </li>
         <li>
-          <button *ngIf="!checkAuthentication()" class="btn btn-primary" style="margin-left: 10%;" [routerLink]="['/login']">LogIn</button>
+          <button *ngIf="!checkAuthentication()" class="btn btn-primary" [routerLink]="['/login']">LogIn</button>
         </li>
         <li>
-          <button class="btn btn-success" style="margin-left: 15%;" [routerLink]="['/registration']" *ngIf="!checkAuthentication()">SignUp</button>
+          <button class="btn btn-success" style="margin-left: 10%;" [routerLink]="['/registration']" *ngIf="!checkAuthentication()">SignUp</button>
           <!-- <button *ngIf="checkAuthentication()" style="margin-left: 10%;" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="items"></span></button>  -->
         </li>
-        
       </div>
     </div>
   </body>
