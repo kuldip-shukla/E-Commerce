@@ -1,0 +1,19 @@
+@media screen and (max-width: 768px){
+    div {
+        width: 100%;
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    img{
+        width: 100%;
+    }
+}
+@media screen and (min-width: 768px){
+    div {
+        width: 100%;
+    }
+    img{
+        margin-left: 30%;
+        margin-right: 30%;
+    }
+}

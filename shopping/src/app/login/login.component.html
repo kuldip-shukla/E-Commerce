@@ -1,60 +1,37 @@
-<html>
-  <head>
-    <style>
-      @media screen and (max-width: 768px){
-        body {
-          width: 100%;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <table style="margin: auto;">
-          <div class="form-group">
-            <tr>
-              <td>
-                  <h3><u><b>LogIn Form</b></u></h3>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="mdl-textfield mdl-js-textfield">
-                  <input class="mdl-textfield__input" type="text" formControlName="email">
-                  <label class="mdl-textfield__label">Email Id</label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="mdl-textfield mdl-js-textfield">
-                  <input class="mdl-textfield__input" type="password" formControlName="password">
-                  <label class="mdl-textfield__label">Password</label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                  <button class="btn btn-primary" type="submit">LogIn</button>&nbsp;  
-                  <button class="btn btn-success" type="button" routerLink="/registration">Registration</button>  
-              </td>
-            </tr>
-          </div>
-        </table>
-      </form>
-    </div>
-    
-      
-      
-        
-          
-  
-          
-        <!-- </div> -->
-
-        
-      <!-- </form>
-    </div> -->
-  </body>
-</html>
+<body>
+  <div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <table style="margin: auto;">
+        <div class="form-group">
+          <tr>
+            <td>
+                <h3><u><b>LogIn Form</b></u></h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" formControlName="email">
+                <label class="mdl-textfield__label">Email Id</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="password" formControlName="password">
+                <label class="mdl-textfield__label">Password</label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <button class="btn btn-primary" type="submit">LogIn</button>&nbsp;  
+                <button class="btn btn-success" type="button" routerLink="/registration">Registration</button>  
+            </td>
+          </tr>
+        </div>
+      </table>
+    </form>
+  </div>
+</body>

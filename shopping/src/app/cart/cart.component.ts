@@ -10,7 +10,6 @@ import { UserService } from '../user.service';
 export class CartComponent implements OnInit {
 
   detail:any[]=[];
-  // cart:any[];
   userid:any;
   productid:any[]=[];
   total:Number = 0;
@@ -23,6 +22,7 @@ export class CartComponent implements OnInit {
     this.userid = localStorage.getItem("id")
     this._userService.getCart(this.userid).subscribe((res:any) => {
       res.map((data)=>{
+        console.log(data)
         this.cart.push(data)
       })    
     });

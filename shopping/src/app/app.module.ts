@@ -24,6 +24,7 @@ import { CartComponent } from './cart/cart.component';
 import { FailedComponent } from './failed/failed.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { UpdateprofileComponent } from './updateprofile/updateprofile.component'
     CartComponent,
     FailedComponent,
     PagenotfoundComponent,
-    UpdateprofileComponent
+    UpdateprofileComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

@@ -71,12 +71,19 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit(){
+    alert("Please Verify Your Email for Login");
+    if (confirm('Go to Mail Account For Verification') ) {
+      window.location.href = `https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin`
+    }
+    else {
+      return false
+    }
     this._userService.registration(this.registrationForm.value)
-      .subscribe((result)=>{
-        this.router.navigate(['login'])
-      },(err)=>{
-        this.router.navigate(['registration'])
-      }) 
+    .subscribe((result)=>{
+      // this.router.navigate(['login']) 
+    },(err)=>{
+      this.router.navigate(['registration'])
+    }) 
   }
 
 }

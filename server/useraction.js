@@ -1,15 +1,42 @@
 const model = require('./model');
 const mongoose = require('mongoose');
 const bcrypt = require("bcryptjs");
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: 'skbusinesspvtltd@gmail.com',
+      pass: 'skbusiness1234'
+    }
+});
 
 module.exports = {
-    'registration': async function(req,res){
-        req.body.password = await bcrypt.hash(req.body.password, 10);
-        var Model = new model.registration(req.body)
-        Model.save((err) => {
-            if(err){ console.log(err); return res.json({code:400, message:"Try again for Registration"})}
-            else return res.json({code:201, message:"Registration Successfully"})
-        })
+    'registration': function(req,res){
+        var mailOptions = {
+            from: 'skbusinesspvtltd@gmail.com',
+            to: req.body.email,
+            subject: 'Email Verification',
+            html: `
+                Hello <b>${req.body.name}</b>,<br>
+                <div>Please Verify Your Email by clicking on below button<br>
+                <a href="http://192.168.0.138:4200/login" style="padding: 8px 12px; border: 1px solid green;border-radius: 8px;font-family: Helvetica, Arial, sans-serif;font-size: 14px; color: #ffffff;background-color: green;text-decoration: none;font-weight:bold;display: inline-block;">Verify Your Email</a><br>
+                Thank You</div>`
+          };
+        transporter.sendMail(mailOptions,async function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                req.body.password = await bcrypt.hash(req.body.password, 10);
+                var Model = new model.registration(req.body)
+                Model.save((err) => {
+                    if(err){ console.log(err); return res.json({code:400, message:"Try again for Registration"})}
+                    else return res.redirect("http://192.168.0.138:4200/login");
+                })
+            }
+        });
     },
     'login': async function(req,res){
         var login = mongoose.model('registration');
@@ -63,18 +90,11 @@ module.exports = {
             else res.json(result);
         });
     },
-    "payment": function(req,res){
-        var Model = new model.purchase(req.body)
-        Model.save((err) => {
-            if(err){ console.log(err); return res.json({code:400, message:"Try again for Payment"})}
-            else return res.json({code:201, message:"Payment Successfully"})
-        })
-    },
     'cart': async function(req,res){
         var Model = new model.cart(req.body)
-        Model.save((err) => {
+        Model.save((err,data) => {
             if(err){ console.log(err); return res.json({code:400, message:"Try again for Cart"})}
-            else return res.json({code:201, message:"Cart Successfully"})
+            else console.log("res",data); return res.json({code:201, message:"Cart Successfully"})
         })
     },
     "getCart": async function(req,res){
@@ -88,6 +108,21 @@ module.exports = {
     "deleteCart": function(req,res){
         var Model = mongoose.model("cart")
         Model.findByIdAndRemove({_id : req.params.id},function (err, data){
+            if(err) res.json(err);
+            else res.json(data);
+        });
+    },
+    "payment": function(req,res){
+        var Model = new model.purchase(req.body)
+        Model.save((err) => {
+            if(err){ console.log(err); return res.json({code:400, message:"Try again for Payment"})}
+            else return res.json({code:201, message:"Payment Successfully"})
+        })
+    },
+    "getOrder": async function(req,res){
+        var Model = mongoose.model("purchase")
+        let id = req.params.id;
+        await Model.find({user_id : id}).populate("product_id").exec(function (err, data){
             if(err) res.json(err);
             else res.json(data);
         });

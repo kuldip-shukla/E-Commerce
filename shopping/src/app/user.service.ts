@@ -21,7 +21,7 @@ export class UserService {
     let body = res;
     return body || { };
   }
-  
+
   registration(userData){
     return this._http.post<any>(`${this.url}/registration`,userData)
     .pipe(catchError(this.errorHandler))
@@ -90,7 +90,7 @@ export class UserService {
   cart(userid,productid){
     const obj = {
       user_id: userid,
-      product_id:productid
+      product_id: productid
     }
     return this._http.post<any>(`${this.url}/cart`,obj)
     .pipe(catchError(this.errorHandler))
@@ -135,7 +135,15 @@ export class UserService {
       catchError(this.errorHandler)
     )
   }
-  
+
+  getOrder(id){
+    return this._http.post(`${this.url}/getOrder/${id}`,{},this.httpOptions)
+    .pipe(
+      catchError(this.errorHandler),
+      map(this.extractData)
+    )
+  }
+
   errorHandler(error: HttpErrorResponse){
     return throwError(error);
   }

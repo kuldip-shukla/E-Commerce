@@ -15,6 +15,7 @@
     "express": "^4.16.4",
     "instamojo-nodejs": "0.0.5",
     "mongoose": "^5.4.19",
+    "nodemailer": "^6.1.0",
     "paypal-rest-sdk": "^1.8.1",
     "url": "^0.11.0"
   }

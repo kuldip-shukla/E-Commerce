@@ -2,6 +2,7 @@
     max-width: 500px!important;
     overflow: hidden!important;
 }
+
 @media screen and (max-width: 768px){
     table,tr,td, .mdl-data-table, .mdl-js-data-table, .mdl-shadow--2dp {
         width: 100%;

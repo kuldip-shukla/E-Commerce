@@ -27,5 +27,6 @@ app.post('/cart',(req,res)=>userAction.cart(req,res));
 app.post('/getCart/:id',(req,res)=>userAction.getCart(req,res));
 app.get('/deleteCart/:id',(req,res)=>userAction.deleteCart(req,res));
 app.post('/payment',(req,res)=>userAction.payment(req,res));
+app.post('/getOrder/:id',(req,res)=>userAction.getOrder(req,res));
 
 app.listen(port,console.log("Server Running on",port));

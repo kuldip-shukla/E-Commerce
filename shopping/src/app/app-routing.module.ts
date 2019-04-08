@@ -15,6 +15,7 @@ import { CartComponent } from './cart/cart.component';
 import { FailedComponent } from './failed/failed.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
+import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch:'full' },
@@ -30,7 +31,9 @@ const routes: Routes = [
   { path: 'mobiles', component: Category2Component },
   { path: 'success', component: SuccessComponent },
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+  { path: 'order', component: OrdersComponent, canActivate: [AuthGuard] },
   { path: 'cart/:id', component: CartComponent, canActivate: [AuthGuard] },
+  // { path: 'order/:id', component: CartComponent, canActivate: [AuthGuard] },
   { path: 'failed', component: FailedComponent },
   { path: 'updateprofile', component: UpdateprofileComponent},
   { path: '**', component: PagenotfoundComponent }
@@ -53,4 +56,5 @@ export const routingComponents = [LoginComponent,
                                   CartComponent,
                                   SuccessComponent,
                                   PagenotfoundComponent,
-                                  FailedComponent];
+                                  FailedComponent,
+                                  OrdersComponent];
