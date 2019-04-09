@@ -27,7 +27,7 @@
           {{sum()}}
         </td>
         <td>
-          <button class="btn btn-success" routerLink="/payment">Buy Now!</button>
+          <button *ngIf="buynow()" class="btn btn-success" routerLink="/payment">Buy Now!</button>
         </td>
       </tr>
     </table><br>

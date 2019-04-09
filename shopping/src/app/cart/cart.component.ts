@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.cart=[];
-    this.total = 0
+    this.total = 10;
     this.userid = localStorage.getItem("id")
     this._userService.getCart(this.userid).subscribe((res:any) => {
       res.map((data)=>{
@@ -29,13 +29,22 @@ export class CartComponent implements OnInit {
   }
 
   sum(){
-    for(let i=0;i<this.cart.length;i++){
-      this.cart[i].product_id.price *= this.cart[i].qty
-      this.total += this.cart[i].product_id.price
+     for(let i=0;i<this.cart.length;i++){
+      this.cart[i].product_id.price *= this.cart[i].qty;
+      this.total += this.cart[i].product_id.price;
     }
     return this.total
   }
 
+   buynow(){
+    console.log(this.total);
+    if(this.total != 0){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
   deleteCart(id){ 
     this._userService.deleteCart(id)
     .subscribe((result)=>{
