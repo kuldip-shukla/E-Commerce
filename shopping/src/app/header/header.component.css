@@ -38,7 +38,7 @@ li.dropdown:hover > .dropdown-menu {
     display: block;
 }
 
-@media screen and (min-width: 769px){
+@media screen and (min-width: 768px){
     section{
         padding-left:80%; 
         padding-top: 0.5%

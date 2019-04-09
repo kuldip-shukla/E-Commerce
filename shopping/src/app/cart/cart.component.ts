@@ -14,6 +14,7 @@ export class CartComponent implements OnInit {
   productid:any[]=[];
   total:Number = 0;
   cart:any[]=[];
+  sorting: any[]=[];
   constructor(private _userService: UserService) { }
 
   ngOnInit() {
@@ -22,14 +23,14 @@ export class CartComponent implements OnInit {
     this.userid = localStorage.getItem("id")
     this._userService.getCart(this.userid).subscribe((res:any) => {
       res.map((data)=>{
-        console.log(data)
         this.cart.push(data)
-      })    
+      })  
     });
   }
 
   sum(){
     for(let i=0;i<this.cart.length;i++){
+      this.cart[i].product_id.price *= this.cart[i].qty
       this.total += this.cart[i].product_id.price
     }
     return this.total

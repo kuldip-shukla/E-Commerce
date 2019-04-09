@@ -1,28 +1,33 @@
 <body>
   <div class="container" >
-    <h3 style="text-align:center;"><b>My Cart </b></h3>        
-    <table id="myTable" class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp" style="text-align-last: center;margin:auto;">
+    <h3 style="text-align:center;"><b>My Cart</b></h3>        
+    <table id="myTable" class="twidth mdl-data-table mdl-js-data-table  mdl-shadow--2dp" style="text-align-last: center;margin:auto;">
       <tr>
         <th>Product_ID</th>
+        <th></th>
         <th class="dtl">Product_Name</th>
         <th>Price</th>
         <th>Actions</th>
       </tr>
       <tr *ngFor="let item of cart; let i =index">
         <td>{{item.product_id._id}}</td>
+        <td><img src="{{item.product_id.image}}" height="100" width="80"></td>
         <td class="dtl">{{item.product_id.productname}}</td>
-        <td>{{item.product_id.price}}</td>
+        <td>{{item.product_id.price}} X {{item.qty}} qty.</td>
         <td>
           <button class="btn btn-success" routerLink="/payment">Buy Now!</button>
           <button class="btn btn-danger" style="margin-left:5%;" (click)="deleteCart(item._id)">Remove</button>
         </td>
       </tr>
       <tr data-ng-init="total=0;">
-        <td colspan="2">
+        <td colspan="3">
           <b>Total Price: </b>
         </td>
         <td>
           {{sum()}}
+        </td>
+        <td>
+          <button class="btn btn-success" routerLink="/payment">Buy Now!</button>
         </td>
       </tr>
     </table><br>

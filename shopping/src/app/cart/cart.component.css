@@ -1,9 +1,17 @@
 .dtl{
-    max-width: 500px!important;
+    max-width: 350px!important;
     overflow: hidden!important;
 }
+
 @media screen and (max-width: 768px){
-    table,tr,td, .mdl-data-table, .mdl-js-data-table, .mdl-shadow--2dp {
+    /* table,tr,td, .mdl-data-table, .mdl-js-data-table, .mdl-shadow--2dp {
         width: 100%;
+    } */
+    .twidth{
+        width: 100%;
+    }
+    .dtl{
+        max-width: 100px!important;
+        overflow: hidden!important;
     }
 }

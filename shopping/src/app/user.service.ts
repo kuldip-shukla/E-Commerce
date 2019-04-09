@@ -87,10 +87,11 @@ export class UserService {
     );
   }
 
-  cart(userid,productid){
+  cart(userid,productid,qty){
     const obj = {
       user_id: userid,
-      product_id: productid
+      product_id: productid,
+      qty: qty
     }
     return this._http.post<any>(`${this.url}/cart`,obj)
     .pipe(catchError(this.errorHandler))

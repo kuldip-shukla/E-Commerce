@@ -94,7 +94,7 @@ module.exports = {
         var Model = new model.cart(req.body)
         Model.save((err,data) => {
             if(err){ console.log(err); return res.json({code:400, message:"Try again for Cart"})}
-            else console.log("res",data); return res.json({code:201, message:"Cart Successfully"})
+            else return res.json({code:201, message:"Cart Successfully"})
         })
     },
     "getCart": async function(req,res){

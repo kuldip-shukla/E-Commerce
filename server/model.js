@@ -83,6 +83,10 @@ const cartSchema = new Schema({
     },
     user_id:{ 
         type: Schema.Types.ObjectId, ref: 'registration' 
+    },
+    qty:{
+        type:Number,
+        default: 1
     }
 },{
     versionKey: false

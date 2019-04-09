@@ -20,6 +20,7 @@ export class DetailComponent implements OnInit {
   phone: any;
   userid: any;
   productid: any;
+  qty : any = 1;
 
   constructor(private _userService: UserService,private http: HttpClient, private router:Router,private route: ActivatedRoute,private _location: Location) { }
 
@@ -40,15 +41,37 @@ export class DetailComponent implements OnInit {
     this._location.back();
   }
 
+  async increaseValue() {
+    this.qty = await parseInt((<HTMLInputElement>document.getElementById('qty')).value)
+    if(this.qty < 10){
+      this.qty ++;
+      document.getElementById('qty').setAttribute('value',this.qty.toString())
+    }
+  }
+
+  decreaseValue() {
+    this.qty = parseInt((<HTMLInputElement>document.getElementById('qty')).value);
+    if(this.qty > 1){
+      this.qty --;
+      document.getElementById('qty').setAttribute('value',this.qty.toString())
+    }
+  }
+
   addToCart(){
-    this.userid = localStorage.getItem("id")
-    this.productid = localStorage.getItem("product_id")
-    this._userService.cart(this.userid,this.productid)
-      .subscribe((result)=>{
-        this.router.navigate(['cart'])
-      },(err)=>{
-        console.log(err)
-        this._location.back();
-      }) 
+    let flag = localStorage.getItem('isLoggedIn')
+    if(flag == 'true'){
+      this.userid = localStorage.getItem("id")
+      this.productid = localStorage.getItem("product_id")
+      this._userService.cart(this.userid,this.productid,this.qty)
+        .subscribe((result)=>{
+          alert("Product Added to Cart Successfully")
+        },(err)=>{
+          console.log(err)
+          this._location.back();
+        }) 
+    }
+    else{
+      this.router.navigate(['login']);
+    }
   }
 }
