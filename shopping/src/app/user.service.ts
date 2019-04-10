@@ -127,7 +127,7 @@ export class UserService {
 
   paymentData(paymentid,userid,productid){
     const obj = {
-      Payment_id: paymentid,
+      payment_id: paymentid,
       user_id: userid,
       product_id:productid
     }
@@ -142,6 +142,13 @@ export class UserService {
     .pipe(
       catchError(this.errorHandler),
       map(this.extractData)
+    )
+  }
+
+  cancelOrder(id){
+    return this._http.get(`${this.url}/cancelOrder/${id}`)
+    .pipe(
+      catchError(this.errorHandler)
     )
   }
 

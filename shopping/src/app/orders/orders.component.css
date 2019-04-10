@@ -1,8 +1,11 @@
 .dtl{
-    max-width: 500px!important;
+    max-width: 350px!important;
     overflow: hidden!important;
 }
-
+body{
+    padding-left: 5%;
+    padding-right: 5%;
+}
 @media screen and (max-width: 768px){
     table,tr,td, .mdl-data-table, .mdl-js-data-table, .mdl-shadow--2dp {
         width: 100%;

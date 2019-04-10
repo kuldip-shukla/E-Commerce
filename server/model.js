@@ -64,14 +64,14 @@ const productSchema = new Schema({
 })
 
 const purchaseSchema = new Schema({
-    payment_id:{
-        type: Schema.Types.ObjectId
-    },
     user_id:{
         type: Schema.Types.ObjectId, ref: 'registration'
     },
     product_id:{
         type: Schema.Types.ObjectId, ref: 'product'
+    },
+    payment_id:{
+        type: String
     }
 },{
     versionKey: false

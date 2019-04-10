@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-orders',
@@ -16,6 +17,7 @@ export class OrdersComponent implements OnInit {
   constructor(private _userService: UserService) { }
 
   ngOnInit() {
+    this.order=[];
     this.userid = localStorage.getItem("id")
     this._userService.getOrder(this.userid).subscribe((res:any) => {
       res.map((data)=>{
@@ -24,20 +26,34 @@ export class OrdersComponent implements OnInit {
     });
   }
 
-  // sum(){
-  //   for(let i=0;i<this.order.length;i++){
-  //     this.total += this.order[i].product_id.price
-  //   }
-  //   return this.total
-  // }
-
-  // deleteCart(id){ 
-  //   this._userService.deleteCart(id)
-  //   .subscribe((result)=>{
-  //     this.ngOnInit()
-  //   },(err)=>{
-  //     console.log(err)
-  //   }) 
-  // }
-
+  cancelOrder(id){ 
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+        this._userService.cancelOrder(id).subscribe((result)=>{
+          this.ngOnInit()
+        },(err)=>{
+          console.log(err)
+        }) 
+      }else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
+  }
 }

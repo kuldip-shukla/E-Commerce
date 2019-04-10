@@ -126,5 +126,12 @@ module.exports = {
             if(err) res.json(err);
             else res.json(data);
         });
-    }
+    },
+    "cancelOrder": function(req,res){
+        var Model = mongoose.model("purchase")
+        Model.findByIdAndRemove({_id : req.params.id},function (err, data){
+            if(err) res.json(err);
+            else res.json(data);
+        });
+    },
 }

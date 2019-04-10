@@ -1,5 +1,7 @@
 .dtl{
-    max-width: 350px!important;
+    padding-left: 0%;
+    padding-right: 0%;
+    max-width: 700px!important;
     overflow: hidden!important;
 }
 
@@ -7,10 +9,15 @@
     /* table,tr,td, .mdl-data-table, .mdl-js-data-table, .mdl-shadow--2dp {
         width: 100%;
     } */
+    button{
+        width: 70px;
+    }
     .twidth{
         width: 100%;
     }
     .dtl{
+        padding-left: 0%;
+        padding-right: 0%;
         max-width: 100px!important;
         overflow: hidden!important;
     }
