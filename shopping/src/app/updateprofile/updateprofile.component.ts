@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import {Location} from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-updateprofile',
@@ -13,7 +14,7 @@ export class UpdateprofileComponent implements OnInit {
 
   id:any;
   updateForm: FormGroup;
-  constructor(private route: ActivatedRoute,private fb : FormBuilder, private _userService: UserService, private router: Router,private _location: Location) { }
+  constructor(private toastr: ToastrService,private route: ActivatedRoute,private fb : FormBuilder, private _userService: UserService, private router: Router,private _location: Location) { }
 
   get name(){
     return this.updateForm.get('name');
@@ -72,8 +73,10 @@ export class UpdateprofileComponent implements OnInit {
   onSubmit(name,email,phone,street,city,state,pincode) {
     this._userService.updateData(name,email,phone,street,city,state,pincode,this.id)
       .subscribe((result)=>{
+        this.toastr.success("profile Updated Successfully","SUCCESS!")
         this._location.back();
       },(err)=>{
+        this.toastr.error("Can't Update Profile","Oops!")
         console.log("Error",err)
       }) 
   }

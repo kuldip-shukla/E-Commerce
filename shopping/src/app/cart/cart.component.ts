@@ -14,21 +14,25 @@ export class CartComponent implements OnInit {
   userid:any;
   productid:any[]=[];
   total:Number = 0;
-  cart:any[]=[];
+  cart:any=[];
   sorting: any[]=[];
   constructor(private _userService: UserService) { }
 
   ngOnInit() {
-    this.cart=[];
+    // this.cart=[];
     this.userid = localStorage.getItem("id")
     this._userService.getCart(this.userid).subscribe((res:any) => {
-      res.map((data)=>{
-        this.cart.push(data)
-      })  
+      // res.map((data)=>{
+      //   this.cart.push(data)
+      // })  
+      this.cart=res
+      this.sum()
     });
+    
   }
-
+ 
   sum(){
+    this.total = 0
     for(let i=0;i<this.cart.length;i++){
       this.cart[i].product_id.price *= this.cart[i].qty;
       this.total += this.cart[i].product_id.price;
@@ -36,7 +40,7 @@ export class CartComponent implements OnInit {
     return this.total
   }
 
-   buynow(){
+  buynow(){
     if(this.total != 0){
       return true;
     }
@@ -44,6 +48,7 @@ export class CartComponent implements OnInit {
       return false;
     }
   }
+
   deleteCart(id){ 
     Swal.fire({
       title: 'Are you sure?',
@@ -61,7 +66,10 @@ export class CartComponent implements OnInit {
           'success'
         )
         this._userService.deleteCart(id).subscribe((result)=>{
-          this.ngOnInit()
+          this._userService.getCart(this.userid).subscribe((res:any) => {
+              this.cart=res
+              this.sum()
+          });
         },(err)=>{
           console.log(err)
         }) 

@@ -25,6 +25,8 @@ import { FailedComponent } from './failed/failed.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 import { OrdersComponent } from './orders/orders.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { OrdersComponent } from './orders/orders.component';
     FormsModule,
     NgxPaginationModule,
     RecaptchaModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [UserService, AuthGuard],
   bootstrap: [AppComponent]

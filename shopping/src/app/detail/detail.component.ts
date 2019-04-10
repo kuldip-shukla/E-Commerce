@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-detail',
@@ -64,7 +65,13 @@ export class DetailComponent implements OnInit {
       this.productid = localStorage.getItem("product_id")
       this._userService.cart(this.userid,this.productid,this.qty)
         .subscribe((result)=>{
-          alert("Product Added to Cart Successfully")
+          Swal.fire({
+            position: 'top-end',
+            type: 'success',
+            title: 'Add To Cart Successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
         },(err)=>{
           console.log(err)
           this._location.back();

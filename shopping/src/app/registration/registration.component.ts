@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registration',
@@ -13,7 +14,7 @@ export class RegistrationComponent implements OnInit {
   roles = ['Seller','User'];
   roleHasError = true;
   registrationForm: FormGroup;
-  constructor(private fb : FormBuilder, private _userService: UserService, private router: Router) { }
+  constructor(private toastr: ToastrService,private fb : FormBuilder, private _userService: UserService, private router: Router) { }
 
   get name(){
     return this.registrationForm.get('name');
@@ -80,8 +81,9 @@ export class RegistrationComponent implements OnInit {
     }
     this._userService.registration(this.registrationForm.value)
     .subscribe((result)=>{
-      // this.router.navigate(['login']) 
+      this.toastr.success("Registration Successfully","SUCCESS!")
     },(err)=>{
+      this.toastr.error("Registration Unsuccessful","Oops!")
       this.router.navigate(['registration'])
     }) 
   }

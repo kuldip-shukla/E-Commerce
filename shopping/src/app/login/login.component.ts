@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import {Location} from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   role:any;
   id:any;
 
-  constructor(private fb : FormBuilder, private _userService: UserService, private router: Router,private _location: Location){}
+  constructor(private toastr: ToastrService,private fb : FormBuilder, private _userService: UserService, private router: Router,private _location: Location){}
 
   get email(){
     return this.loginForm.get('email');
@@ -46,10 +47,10 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('role', this.role);
             localStorage.setItem('id', this.id);
           }
-          // this._location.back();
+          this.toastr.success("Login Successfully","SUCCESS!")
           this.router.navigate(['home']);
         },(err)=>{
-          alert("Invalid Username or Password")
+          this.toastr.error("Invalid Username or Password","Oops!")
           this.router.navigate(['login']);
         })  
         

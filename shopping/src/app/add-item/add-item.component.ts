@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 const URL = "http://66.70.179.133:8808/codezeros/uploadFile/common" 
 
@@ -19,7 +20,7 @@ export class AddItemComponent implements OnInit {
   productForm: FormGroup;
   url: any;
   images:any[]=[];
-  constructor(private fb : FormBuilder, private _userService: UserService, private router: Router, private _http: HttpClient) { }
+  constructor(private toastr: ToastrService,private fb : FormBuilder, private _userService: UserService, private router: Router, private _http: HttpClient) { }
 
   get productname(){
     return this.productForm.get('productname');
@@ -90,8 +91,10 @@ export class AddItemComponent implements OnInit {
     }
     this._userService.product(data)
       .subscribe((result)=>{
+        this.toastr.success("Product Added Successfully","SUCCESS!")
         this.router.navigate(['home'])  
       },(err)=>{
+        this.toastr.error("Can't Add Product","Oops!")
         this.router.navigate(['addProduct'])
       }) 
   }

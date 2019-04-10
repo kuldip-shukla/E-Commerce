@@ -7,8 +7,10 @@
 </head>
 <body>
   <div class="container" >
-    <h3 style="text-align:center;"><b>My Cart</b></h3>        
-    <table id="myTable" class="twidth mdl-data-table mdl-js-data-table  mdl-shadow--2dp" style="text-align-last: center;margin:auto;">
+    <h3 style="text-align:center;"><b>My Cart</b></h3>  
+    <h5 style="text-align:center;" *ngIf="!cart.length">Your cart is empty.</h5>        
+    <table id="myTable" class="twidth mdl-data-table mdl-js-data-table  mdl-shadow--2dp"
+     style="text-align-last: center;margin:auto;" *ngIf="cart.length">
       <tr>
         <th>Product_ID</th>
         <th></th>
@@ -22,19 +24,19 @@
         <td class="dtl">{{item.product_id.productname}}</td>
         <td>{{item.product_id.price}} X {{item.qty}} qty.</td>
         <td>
-          <button class="btn btn-success" routerLink="/payment">Buy Now!</button>
+          <button class="btn btn-success" routerLink="/payment">Buy Now</button>
           <button class="btn btn-danger" style="margin-left:5%;" (click)="deleteCart(item._id)">Remove</button>
         </td>
       </tr>
-      <tr data-ng-init="total=0;">
+      <tr>
         <td colspan="3">
           <b>Total Price: </b>
         </td>
         <td>
-          {{sum()}}
+          {{total}}
         </td>
         <td>
-          <button *ngIf="buynow()" class="btn btn-success" routerLink="/payment">Buy Now!</button>
+          <button *ngIf="buynow()" class="btn btn-success" routerLink="/payment">Buy</button>
         </td>
       </tr>
     </table><br>
