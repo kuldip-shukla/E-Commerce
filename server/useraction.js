@@ -134,4 +134,11 @@ module.exports = {
             else res.json(data);
         });
     },
+    "getUsers":async function(req,res){
+        var Model = mongoose.model("registration")
+        Model.find({}, function(err,result){
+            if(err){return res.json({code:400, message:"Data Display Error"})}
+            else return res.json(result)
+        })
+    }
 }
