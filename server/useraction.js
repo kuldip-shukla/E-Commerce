@@ -140,5 +140,19 @@ module.exports = {
             if(err){return res.json({code:400, message:"Data Display Error"})}
             else return res.json(result)
         })
-    }
+    },
+    "getProducts":async function(req,res){
+        var Model = mongoose.model("product")
+        Model.find({}, function(err,result){
+            if(err){return res.json({code:400, message:"Data Display Error"})}
+            else return res.json(result)
+        })
+    },
+    "getOrders":async function(req,res){
+        var Model = mongoose.model("purchase")
+        Model.find({}).populate("product_id").exec(function(err,result){
+            if(err){return res.json({code:400, message:"Data Display Error"})}
+            else return res.json(result)
+        })
+    },
 }

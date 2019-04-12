@@ -28,6 +28,22 @@ export class AdminService {
     )
   }
 
+  getProducts(){
+    return this._http.post(`${this.url}/getProducts`,{},this.httpOptions)
+    .pipe(
+      catchError(this.errorHandler),
+      map(this.extractData)
+    )
+  }
+
+  getOrders(){
+    return this._http.post(`${this.url}/getOrders`,{},this.httpOptions)
+    .pipe(
+      catchError(this.errorHandler),
+      map(this.extractData)
+    )
+  }
+
   errorHandler(error: HttpErrorResponse){
     return throwError(error);
   }

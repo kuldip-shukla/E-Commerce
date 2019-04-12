@@ -30,5 +30,7 @@ app.post('/payment',(req,res)=>userAction.payment(req,res));
 app.post('/getOrder/:id',(req,res)=>userAction.getOrder(req,res));
 app.get('/cancelOrder/:id',(req,res)=>userAction.cancelOrder(req,res));
 app.post('/getUsers',(req,res)=>userAction.getUsers(req,res));
+app.post('/getProducts',(req,res)=>userAction.getProducts(req,res));
+app.post('/getOrders',(req,res)=>userAction.getOrders(req,res));
 
 app.listen(port,console.log("Server Running on",port));

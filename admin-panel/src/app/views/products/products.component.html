@@ -1,3 +1,43 @@
-<p>
-  products works!
-</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-16">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Products</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-primary" style="text-align:center;">
+                                    <th>Id</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th colspan="3">Actions</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let product of productsData; let i=index">
+                                        <td>{{product._id}}</td>
+                                        <td><img src="{{product.image}}" height="100" width="80"></td>
+                                        <td>{{product.productname}}</td>
+                                        <td>{{product.price}}</td>
+                                        <td>
+                                            <img src="../../../assets/img/view.png" height="15" width="15" (click)="view()">
+                                        </td>
+                                        <td>
+                                            <img src="../../../assets/img/edit.png" height="15" width="15" (click)="edit()">
+                                        </td>
+                                        <td>
+                                            <img src="../../../assets/img/delete.png" height="15" width="15" (click)="delete()">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,56 +1,45 @@
 <div class="main-content">
-  <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-12">
-              <div class="card">
-                  <div class="card-header card-header-danger">
-                      <h4 class="card-title ">Users</h4>
-                      <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
-                  </div>
-                  <div class="card-body">
-                      <div class="table-responsive">
-                          <table class="table">
-                              <thead class=" text-primary">
-                                  <th>
-                                      ID
-                                  </th>
-                                  <th>
-                                      Name
-                                  </th>
-                                  <th>
-                                      Email
-                                  </th>
-                                  <th>
-                                      Role
-                                  </th>
-                                  <th>
-                                      Phone
-                                  </th>
-                              </thead>
-                              <tbody *ngFor="let user of usersData; let i=index">
-                                  <tr >
-                                      <td>
-                                         {{user}} 
-                                      </td>
-                                      <td>
-                                          {{user.name}}
-                                      </td>
-                                      <td>
-                                          {{user.email}}
-                                      </td>
-                                      <td>
-                                          {{user.role}}
-                                      </td>
-                                      <td class="text-primary">
-                                          {{user.phone}}
-                                      </td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Users</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-primary" style="text-align:center;">
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Phone</th>
+                                    <th colspan="3">Actions</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let user of usersData; let i=index">
+                                        <td>{{user._id}}</td>
+                                        <td>{{user.name}}</td>
+                                        <td>{{user.email}}</td>
+                                        <td>{{user.role}}</td>
+                                        <td>{{user.phone}}</td>
+                                        <td>
+                                            <img src="../../../assets/img/view.png" height="15" width="15" (click)="view()">
+                                        </td>
+                                        <td>
+                                            <img src="../../../assets/img/edit.png" height="15" width="15" (click)="edit()">
+                                        </td>
+                                        <td>
+                                            <img src="../../../assets/img/delete.png" height="15" width="15" (click)="delete()">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

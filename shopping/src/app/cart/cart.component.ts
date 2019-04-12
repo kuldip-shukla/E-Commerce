@@ -19,12 +19,8 @@ export class CartComponent implements OnInit {
   constructor(private _userService: UserService) { }
 
   ngOnInit() {
-    // this.cart=[];
     this.userid = localStorage.getItem("id")
-    this._userService.getCart(this.userid).subscribe((res:any) => {
-      // res.map((data)=>{
-      //   this.cart.push(data)
-      // })  
+    this._userService.getCart(this.userid).subscribe((res:any) => { 
       this.cart=res
       this.sum()
     });

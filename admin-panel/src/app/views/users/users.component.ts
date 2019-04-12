@@ -23,4 +23,15 @@ export class UsersComponent implements OnInit {
     })
   }
 
+  view(){
+    alert("View Clicked")
+  }
+
+  edit(){
+    alert("Edit Clicked")
+  }
+
+  delete(){
+    alert("Delete Clicked")
+  }
 }

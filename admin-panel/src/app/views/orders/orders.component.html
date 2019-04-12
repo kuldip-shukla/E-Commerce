@@ -1,3 +1,47 @@
-<p>
-  orders works!
-</p>
+<div class="main-content">
+  <div class="container">
+    <!-- <div class="row"> -->
+      <!-- <div class="col-md-12"> -->
+        <div class="card">
+          <div class="card-header card-header-danger">
+              <h4 class="card-title ">Orders</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="text-primary" style="text-align:center;">
+                  <th>Order_Id</th>
+                  <th>Payment_Id</th>
+                  <th>User_Id</th>
+                  <th>Product_Id</th>
+                  <!-- <th>Product_Name</th> -->
+                  <!-- <th>Product_Price</th> -->
+                  <th colspan="3">Actions</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let order of ordersData; let i=index">
+                    <td>{{order._id}}</td>
+                    <td>{{order.payment_id}}</td>
+                    <td>{{order.user_id}}</td>
+                    <td>{{order.product_id._id}}</td>
+                    <!-- <td>{{order.product_id.productname}}</td> -->
+                    <!-- <td>{{order.product_id.price}}</td> -->
+                    <td>
+                      <img src="../../../assets/img/view.png" height="15" width="15" (click)="view()">
+                    </td>
+                    <td>
+                      <img src="../../../assets/img/edit.png" height="15" width="15" (click)="edit()">
+                    </td>
+                    <td>
+                      <img src="../../../assets/img/delete.png" height="15" width="15" (click)="delete()">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      <!-- </div> -->
+    <!-- </div> -->
+  </div>
+</div>

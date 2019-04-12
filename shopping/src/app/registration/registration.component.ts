@@ -14,7 +14,13 @@ export class RegistrationComponent implements OnInit {
   roles = ['Seller','User'];
   roleHasError = true;
   registrationForm: FormGroup;
-  constructor(private toastr: ToastrService,private fb : FormBuilder, private _userService: UserService, private router: Router) { }
+  loadAPI: Promise<any>;
+  constructor(private toastr: ToastrService,private fb : FormBuilder, private _userService: UserService, private router: Router) {
+    this.loadAPI = new Promise((resolve) => {
+      this.loadScript();
+      resolve(true);
+    });
+  }
 
   get name(){
     return this.registrationForm.get('name');
@@ -63,6 +69,34 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
+  public loadScript() {        
+    var isFound = false;
+    var scripts = document.getElementsByTagName("script")
+    for (var i = 0; i < scripts.length; ++i) {
+      if (scripts[i].getAttribute('src') != null && scripts[i].getAttribute('src').includes("loader")) {
+          isFound = true;
+      }
+    }
+
+    if (!isFound) {
+      var dynamicScripts = [
+        "https://code.getmdl.io/1.3.0/material.min.js",
+        "https://checkout.stripe.com/checkout.js",
+        'https://www.google.com/recaptcha/api.js'
+      ];
+
+      for (var i = 0; i < dynamicScripts .length; i++) {
+          let node = document.createElement('script');
+          node.src = dynamicScripts [i];
+          node.type = 'text/javascript';
+          node.async = false;
+          node.charset = 'utf-8';
+          document.getElementsByTagName('head')[0].appendChild(node);
+      }
+
+    }
+  }
+
   validateRole(value){
     if(value === 'default'){
       this.roleHasError = true;
@@ -72,8 +106,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit(){
-    alert("Please Verify Your Email for Login");
-    if (confirm('Go to Mail Account For Verification') ) {
+    if (confirm('Please Verify Your Email for Login') ) {
       window.location.href = `https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin`
     }
     else {
