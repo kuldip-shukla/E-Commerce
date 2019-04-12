@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
   constructor(private _adminService: AdminService) { }
 
   ngOnInit() {
+    this.ordersData = []
     this._adminService.getOrders()
     .subscribe(res => 
     {

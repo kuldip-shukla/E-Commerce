@@ -7,27 +7,29 @@
 </head>
 <body>
   <div class="container" >
-    <h3 style="text-align:center;"><b>My Orders </b></h3>        
-    <table id="myTable" class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp" style="text-align-last: center;margin:auto;">
-      <tr>
-        <th>Payment_ID</th>
-        <th>Product_ID</th>
-        <th class="dtl">Product_Name</th>
-        <th>Price</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-      <tr *ngFor="let item of order; let i =index">
-        <td>{{item.payment_id}}</td>
-        <td>{{item.product_id._id}}</td>
-        <td class="dtl">{{item.product_id.productname}}</td>
-        <td>{{item.product_id.price}}</td>
-        <td style="font-size:15px;color: green">{{item.status}}</td>
-        <td>
-          <button class="btn btn-danger" style="margin-left:5%;" (click)="cancelOrder(item._id)">Cancel Order</button>
-        </td>
-      </tr>
-    </table>
+    <h3 style="text-align:center;"><b>My Orders </b></h3>       
+    <div class="table-responsive">
+      <table id="myTable" class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp" style="text-align-last: center;margin:auto;">
+        <tr>
+          <th>Payment_ID</th>
+          <th>Product_ID</th>
+          <th class="dtl">Product_Name</th>
+          <th>Price</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+        <tr *ngFor="let item of order; let i =index">
+          <td>{{item.payment_id}}</td>
+          <td>{{item.product_id._id}}</td>
+          <td class="dtl">{{item.product_id.productname}}</td>
+          <td>{{item.product_id.price}}</td>
+          <td style="font-size:15px;color: green">{{item.status}}</td>
+          <td>
+            <button class="btn btn-danger" style="margin-left:5%;" (click)="cancelOrder(item._id)">Cancel Order</button>
+          </td>
+        </tr>
+      </table>
+    </div> 
   </div>    
 </body>
 </html>
