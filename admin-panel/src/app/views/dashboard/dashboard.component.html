@@ -1,3 +1,49 @@
-<p>
-  dashboard works!
-</p>
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+              <h4 class="card-title ">Orders</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="text-primary" style="text-align:center;">
+                  <th>Order_Id</th>
+                  <th>Product_Name</th>
+                  <th>Product_Price</th>
+                  <th>Status</th>
+                  <th colspan="5">Actions</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let order of ordersData; let i=index">
+                    <td>{{order._id}}</td>
+                    <td>{{order.product_id.productname}}</td>
+                    <td>{{order.product_id.price}}</td>
+                    <td>{{order.status}}</td>
+                    <td>
+                      <img src="../../../assets/img/awaiting.png" height="25" width="25" (click)="awaiting(order._id)">
+                    </td>
+                    <td>
+                      <img src="../../../assets/img/processing.png" height="25" width="25" (click)="processing(order._id)">
+                    </td>
+                    <td>
+                      <img src="../../../assets/img/dispatched.png" height="25" width="25" (click)="dispatched(order._id)">
+                    </td>
+                    <td>
+                      <img src="../../../assets/img/delivered.png" height="25" width="25" (click)="delivered(order._id)">
+                    </td>
+                    <td>
+                      <img src="../../../assets/img/returns.png" height="25" width="25" (click)="returns(order._id)">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

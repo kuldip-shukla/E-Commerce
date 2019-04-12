@@ -44,6 +44,19 @@ export class AdminService {
     )
   }
 
+  updateStatus(data,id){
+    
+    const obj = {
+      status : data
+    }
+    
+    return this._http.post(`${this.url}/updateStatus/${id}`,obj)
+    .pipe(
+      catchError(this.errorHandler),
+      map(this.extractData)
+    )
+  }
+
   errorHandler(error: HttpErrorResponse){
     return throwError(error);
   }

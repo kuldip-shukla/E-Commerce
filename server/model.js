@@ -72,6 +72,11 @@ const purchaseSchema = new Schema({
     },
     payment_id:{
         type: String
+    },
+    status:{
+        type:String, 
+        enum:['Awaiting Order','Order In Processing','Order Dispatched','Order Delivered','Order Returned'],
+        default: 'Awaiting Order'
     }
 },{
     versionKey: false

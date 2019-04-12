@@ -14,6 +14,7 @@
         <th>Product_ID</th>
         <th class="dtl">Product_Name</th>
         <th>Price</th>
+        <th>Status</th>
         <th>Actions</th>
       </tr>
       <tr *ngFor="let item of order; let i =index">
@@ -21,8 +22,8 @@
         <td>{{item.product_id._id}}</td>
         <td class="dtl">{{item.product_id.productname}}</td>
         <td>{{item.product_id.price}}</td>
+        <td style="font-size:15px;color: green">{{item.status}}</td>
         <td>
-          <button class="btn btn-success" routerLink="/payment">Track Order</button>
           <button class="btn btn-danger" style="margin-left:5%;" (click)="cancelOrder(item._id)">Cancel Order</button>
         </td>
       </tr>

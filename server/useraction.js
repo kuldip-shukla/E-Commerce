@@ -155,4 +155,13 @@ module.exports = {
             else return res.json(result)
         })
     },
+    "updateStatus":async function(req,res){
+        var Model = mongoose.model("purchase")
+        let id = req.params.id;
+        var update = {$set:{status:req.body.status}}
+        // console.log(update)
+        var param = await Model.findByIdAndUpdate({_id : id},update)
+        if(param){return res.json({code:201, message:"Data Updated Successfully"})}
+        else  return res.json({code:400, message:"Data Updation Failed"})
+    },
 }

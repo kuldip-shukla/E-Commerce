@@ -1,3 +1,5 @@
+import { Url } from 'url';
+
 interface NavAttributes {
   [propName: string]: any;
 }
@@ -33,21 +35,21 @@ export const navItems: NavData[] = [
   {
     name: 'Dashboard',
     url: '/dashboard',
-    icon: 'icon-speedometer'
+    icon: 'icon-chart'
   },
   {
     name: 'Products',
     url: '/products',
-    icon: 'icon-speedometer'
+    icon: 'icon-social-dropbox'
   },
   {
     name: 'Users',
     url: '/users',
-    icon: 'icon-speedometer'
+    icon: 'icon-people'
   },
   {
     name: 'Orders',
     url: '/orders',
-    icon: 'icon-speedometer'
+    icon: 'icon-basket-loaded'
   },
 ];
