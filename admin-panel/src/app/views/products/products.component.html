@@ -1,5 +1,8 @@
 <div class="main-content">
     <div class="container-fluid">
+        <div style="padding-left:90%">
+            <button class="btn btn-danger" [routerLink]="['/addproduct']" style="color:honeydew;">Add</button>
+        </div><br>
         <div class="row">
             <div class="col-md-16">
                 <div class="card">
@@ -26,10 +29,10 @@
                                             <img src="../../../assets/img/view.png" height="15" width="15" (click)="view()">
                                         </td>
                                         <td>
-                                            <img src="../../../assets/img/edit.png" height="15" width="15" (click)="edit()">
+                                            <img src="../../../assets/img/edit.png" height="15" width="15" [routerLink]="['/updateproduct', product._id]">
                                         </td>
                                         <td>
-                                            <img src="../../../assets/img/delete.png" height="15" width="15" (click)="delete()">
+                                            <img src="../../../assets/img/delete.png" height="15" width="15" (click)="delete(product._id)">
                                         </td>
                                     </tr>
                                 </tbody>

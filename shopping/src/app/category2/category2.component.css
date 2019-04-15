@@ -4,7 +4,11 @@
 }
 
 .demo-card-square > .mdl-card__title {
-    color: #fff;
+    color: #F2EDD7FF;
+}
+
+body{
+    background-color: #D69764
 }
 
 @media screen and (min-width: 1025px){
@@ -13,7 +17,7 @@
         height: 400px;
     }
     .demo-card-square > .mdl-card__title {
-        color: #fff;
+        color: #F2EDD7FF;
     }
     body{
         text-align:-webkit-center;
@@ -34,7 +38,7 @@
         height: 400px;
     }
     .demo-card-square > .mdl-card__title {
-        color: #fff;
+        color: #F2EDD7FF;
     }
     body{
         text-align:-webkit-center;
@@ -55,7 +59,7 @@
         height: 400px;
     }
     .demo-card-square > .mdl-card__title {
-        color: #fff;
+        color: #F2EDD7FF;
     }
     body{
         text-align:-webkit-center;
@@ -76,7 +80,7 @@
         height: 500px;
     }
     .demo-card-square > .mdl-card__title {
-        color: #fff;
+        color: #F2EDD7FF;
     }
     body{
         text-align:-webkit-center;
@@ -94,7 +98,7 @@
         height: 500px;
     }
     .demo-card-square > .mdl-card__title {
-        color: #fff;
+        color: #F2EDD7FF;
     }
     body{
         text-align:-webkit-center;
@@ -112,7 +116,7 @@
         height: 400px;
     }
     .demo-card-square > .mdl-card__title {
-        color: #fff;
+        color: #F2EDD7FF;
     }
     body{
         text-align:-webkit-center;
@@ -134,7 +138,7 @@
         height: 400px;
     }
     .demo-card-square > .mdl-card__title {
-        color: #fff;
+        color: #F2EDD7FF;
     }
     body{
         text-align:-webkit-center;

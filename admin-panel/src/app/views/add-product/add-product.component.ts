@@ -1,18 +1,18 @@
-import { Component, OnInit  } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../../admin.service';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 const URL = "http://66.70.179.133:8808/codezeros/uploadFile/common" 
 
 @Component({
-  selector: 'app-add-item',
-  templateUrl: './add-item.component.html',
-  styleUrls: ['./add-item.component.css']
+  selector: 'app-add-product',
+  templateUrl: './add-product.component.html',
+  styleUrls: ['./add-product.component.scss']
 })
-export class AddItemComponent implements OnInit {
+export class AddProductComponent implements OnInit {
 
   categories = ['Laptop','Mobile'];
   categoryHasError = true;
@@ -20,7 +20,7 @@ export class AddItemComponent implements OnInit {
   url: any;
   images:any[]=[];
   loadAPI: Promise<any>;
-  constructor(private toastr: ToastrService,private fb : FormBuilder, private _userService: UserService, private router: Router, private _http: HttpClient) {
+  constructor(private toastr: ToastrService,private fb : FormBuilder, private _adminservice: AdminService, private router: Router, private _http: HttpClient) {
     this.loadAPI = new Promise((resolve) => {
       this.loadScript();
       resolve(true);
@@ -64,7 +64,7 @@ export class AddItemComponent implements OnInit {
   }
 
    onSelectFile(event) {
-    this._userService.upload(event.target.files[0])
+    this._adminservice.upload(event.target.files[0])
     .subscribe((result)=>{
       this.images = result.url 
       var reader = new FileReader();
@@ -120,7 +120,7 @@ export class AddItemComponent implements OnInit {
       "feature" :this.productForm.controls.feature.value,
       "features" :this.productForm.controls.features.value
     }
-    this._userService.product(data)
+    this._adminservice.addProduct(data)
       .subscribe((result)=>{
         this.toastr.success("Product Added Successfully","SUCCESS!")
         this.router.navigate(['home'])  
@@ -129,5 +129,6 @@ export class AddItemComponent implements OnInit {
         this.router.navigate(['addProduct'])
       }) 
   }
+
 
 }

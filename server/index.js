@@ -33,5 +33,10 @@ app.post('/getUsers',(req,res)=>userAction.getUsers(req,res));
 app.post('/getProducts',(req,res)=>userAction.getProducts(req,res));
 app.post('/getOrders',(req,res)=>userAction.getOrders(req,res));
 app.post('/updateStatus/:id',(req,res)=>userAction.updateStatus(req,res));
+app.get('/editProduct/:id',(req,res)=>userAction.editProduct(req,res));
+app.post('/updateProduct/:id',(req,res)=>userAction.updateProduct(req,res));
+app.get('/deleteProduct/:id',(req,res)=>userAction.deleteProduct(req,res));
+app.get('/deleteUser/:id',(req,res)=>userAction.deleteUser(req,res));
+app.get('/deleteOrder/:id',(req,res)=>userAction.deleteOrder(req,res));
 
 app.listen(port,console.log("Server Running on",port));

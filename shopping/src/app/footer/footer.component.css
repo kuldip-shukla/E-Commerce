@@ -3,8 +3,8 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: gray;
-    color:white;
+    background-color: #755139FF;
+    color:#F2EDD7FF;
     text-align: center;
 }
 
@@ -22,5 +22,5 @@
 } */
 
 a{
-    color: white
+    color: #EE7500
 }

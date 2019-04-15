@@ -6,20 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
+  <img src="../../assets/main.jpg" width="100%">
   <div class="container">
     <div class="row">
       <div class="cardwidth" *ngFor="let product of productData | paginate: config ; let i=index">
         <div class="demo-card-square mdl-card mdl-shadow--2dp" >
           <div class="mdl-card__title mdl-card--expand"  [ngStyle]="{background: 'url(' + product.image + ') center/ contain no-repeat'}"></div>
           <div>
-            <!-- class="mdl-card__title-text" -->
             <h2 style="font-size:15px; color:black;">{{product.productname}}</h2>
           </div>
           <div class="mdl-card__supporting-text" style="font-size:15px; color: black">
             <b>Price: </b>{{product.price}}/-
           </div>
           <div class="mdl-card__actions mdl-card--border">
-            <a style="background-color:crimson; color:white" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" [routerLink]="['/detail', product._id]" >
+            <a style="background-color:#755139FF; color:#F2EDD7FF" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" [routerLink]="['/detail', product._id]" >
               View Details
             </a>
           </div>

@@ -50,6 +50,14 @@ export const routes: Routes = [
         loadChildren: './views/products/products.module#ProductsModule'
       },
       {
+        path: 'addproduct',
+        loadChildren: './views/add-product/add-product.module#AddProductModule'
+      },
+      {
+        path: 'updateproduct/:id',
+        loadChildren: './views/update-product/update-product.module#UpdateProductModule'
+      },
+      {
         path: 'users',
         loadChildren: './views/users/users.module#UsersModule'
       },

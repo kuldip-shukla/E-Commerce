@@ -163,4 +163,39 @@ module.exports = {
         if(param){return res.json({code:201, message:"Data Updated Successfully"})}
         else  return res.json({code:400, message:"Data Updation Failed"})
     },
+    "editProduct": function(req,res){
+        var Model = mongoose.model("product")
+        Model.findById({_id : req.params.id},function (err, data){
+            if(err) res.json(err);
+            else res.json(data);
+        });
+    },
+    "updateProduct":async function(req,res){
+        var Model = mongoose.model("product")
+        var update = {$set:{productname:req.body.productname,price:req.body.price,image:req.body.image,category:req.body.category,feature:req.body.feature,features:req.body.features}}
+        var param = await Model.findOneAndUpdate({_id : req.params.id},update)
+        if(param){return res.json({code:201, message:"Data Updated Successfully"})}
+        else  return res.json({code:400, message:"Data Updation Failed"})
+    },
+    "deleteProduct": function(req,res){
+        var Model = mongoose.model("product")
+        Model.findByIdAndRemove({_id : req.params.id},function (err, data){
+            if(err) res.json(err);
+            else res.json(data);
+        });
+    },
+    "deleteUser": function(req,res){
+        var Model = mongoose.model("registration")
+        Model.findByIdAndRemove({_id : req.params.id},function (err, data){
+            if(err) res.json(err);
+            else res.json(data);
+        });
+    },
+    "deleteOrder": function(req,res){
+        var Model = mongoose.model("purchase")
+        Model.findByIdAndRemove({_id : req.params.id},function (err, data){
+            if(err) res.json(err);
+            else res.json(data);
+        });
+    },
 }

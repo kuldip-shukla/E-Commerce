@@ -81,7 +81,6 @@ export class RegistrationComponent implements OnInit {
     if (!isFound) {
       var dynamicScripts = [
         "https://code.getmdl.io/1.3.0/material.min.js",
-        "https://checkout.stripe.com/checkout.js",
         'https://www.google.com/recaptcha/api.js'
       ];
 

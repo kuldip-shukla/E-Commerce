@@ -1,9 +1,7 @@
 div {
     list-style-type: none;
-    /* margin: 0;
-    padding: 0; */
     overflow: initial;
-    background-color:crimson;
+    background-color:#755139FF;
 }
 
 li {
@@ -12,26 +10,26 @@ li {
 
 li a {
     display: block;
-    color: white;
+    color: #F2EDD7FF;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 li a:hover:not(.active) {
-    background-color: #AC3E31;
-    color: #ffffff;
+    background-color: #393D40;
+    color: #F2EDD7FF;
 }
 
 .active {
-    background-color: rgb(101, 217, 228);
+    background-color: #393D40;
 }
 
 .navbar-default .navbar-nav > li.dropdown:hover > a, 
 .navbar-default .navbar-nav > li.dropdown:hover > a:hover,
 .navbar-default .navbar-nav > li.dropdown:hover > a:focus {
-    background-color: #AC3E31;
-    color: #ffffff;
+    background-color: #393D40;
+    color: #F2EDD7FF;
 }
 
 li.dropdown:hover > .dropdown-menu {
