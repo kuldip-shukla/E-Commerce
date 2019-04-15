@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { AdminService } from '../../admin.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-update-product',
@@ -19,7 +20,7 @@ export class UpdateProductComponent implements OnInit {
   loadAPI: Promise<any>;
   data: any = {};
   fileName = '';
-  constructor(private toastr: ToastrService, private route: ActivatedRoute, private fb : FormBuilder, private _adminService: AdminService, private router: Router) {
+  constructor(private toastr: ToastrService, private route: ActivatedRoute, private _location: Location, private fb : FormBuilder, private _adminService: AdminService, private router: Router) {
     this.loadAPI = new Promise((resolve) => {
       this.loadScript();
       resolve(true);
@@ -52,6 +53,16 @@ export class UpdateProductComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this._adminService.editProduct(params['id']).subscribe(res => {
+        console.log(res)
+        this.data = res;
+        console.log("data",this.data.image)
+        this.fileName = this.data.image
+        this.updateProductForm.patchValue(this.data);
+      });
+    });
+    
     this.updateProductForm = this.fb.group({
       productname : ['',Validators.required],
       price : ['',Validators.required],
@@ -60,28 +71,21 @@ export class UpdateProductComponent implements OnInit {
       feature : ['',Validators.required],
       features : this.fb.array([]),
     });
+    
   }
 
-  ngAfterViewInit(){
-    this.route.params.subscribe(params => {
-      this._adminService.editProduct(params['id']).subscribe(res => {
-        this.data = res;
-        console.log("data",this.data.image)
-        this.fileName = this.data.image
-        this.updateProductForm.patchValue(this.data);
-      });
-    });
-  }
+  // ngAfterViewInit(){
+    
+  // }
 
   onSelectFile($event) {
-    let file = $event.target.files[0]; // <--- File Object for future use.
-     this.updateProductForm.controls['image'].patchValue(file ? file.name : '');
     this._adminService.upload($event.target.files[0]).subscribe((result)=>{
       this.images = result.url 
       var reader = new FileReader();
       reader.readAsDataURL($event.target.files[0]);
-      reader.onload = (event) => { // called once readAsDataURL is completed
+      reader.onload = (event) => { 
         this.url = reader.result;
+        this.url = this.fileName
       }
     },(err)=>{
       console.log(err)
@@ -120,6 +124,10 @@ export class UpdateProductComponent implements OnInit {
     }else{
       this.categoryHasError = false;
     }
+  }
+
+  back(){
+    this._location.back();
   }
 
   onSubmit(productname,price,image,category,feature,features){

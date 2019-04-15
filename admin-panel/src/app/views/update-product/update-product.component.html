@@ -37,7 +37,7 @@
             <td>
               <div class="mdl-textfield mdl-js-textfield">
                 <img *ngIf="url" [src]="url" height="200"><br/>
-                <input type='file' (change)="onSelectFile($event)" >
+                <input type='file' (change)="onSelectFile($event)" [class.in-valid]="image.invalid && image.touched" formControlName="image" >
                 <input type="hidden" name="fileHidden"  [class.in-valid]="image.invalid && image.touched"  formControlName="image"/> 
                 <small [class.d-none]="image.valid || image.untouched" class="text-danger">Image is required</small>
               </div>
@@ -72,7 +72,7 @@
           <tr>
             <td>
               <button class="btn btn-success" type="submit" [disabled]="!updateProductForm.valid || categoryHasError">Add</button>  
-              <button class="btn btn-danger" type="reset" style="margin-left:5%" routerLink="/home">Cancel</button>
+              <button class="btn btn-danger" type="reset" style="margin-left:5%" (click)="back()">Cancel</button>
             </td>
           </tr>
         </div>
