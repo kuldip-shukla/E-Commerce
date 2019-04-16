@@ -16,12 +16,13 @@ export class HomeComponent implements OnInit {
   config: any; 
   collection = [];
   id: string;
-  
+  slides:any;
+  slideConfig:any;
   constructor(private _userService: UserService,private http: HttpClient, private router:Router,private route: ActivatedRoute) {
 
     this.config = {
       currentPage: 1,
-      itemsPerPage: 6
+      itemsPerPage: 9
     };
   
     this.route.queryParamMap
@@ -37,6 +38,13 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.slides = [
+      {img: "../../assets/cover.jpg"},
+      {img: "../../assets/cover1.jpg"},
+      {img: "../../assets/cover2.png"}
+    ];
+    this.slideConfig = {"slidesToShow": 1, "slidesToScroll": 1, "autoplay":true, "autoplaySpeed":5000};
+
     this.id = localStorage.getItem('token');
     this._userService.displayData()
     .subscribe(res => 

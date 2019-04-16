@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
-<body>
-  <img src="../../assets/main.jpg" width="100%">
+<body style="background-image:url('../../assets/wallpaper.jpg');background-repeat: no-repeat;background-size: cover;">
+  <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig" (afterChange)="afterChange($event)">
+    <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+      <img src="{{ slide.img }}" alt="" width="100%" height="450">
+    </div>
+  </ngx-slick>
   <div class="container">
     <div class="row">
       <div class="cardwidth" *ngFor="let product of productData | paginate: config ; let i=index">
@@ -16,7 +20,7 @@
             <h2 style="font-size:15px; color:black;">{{product.productname}}</h2>
           </div>
           <div class="mdl-card__supporting-text" style="font-size:15px; color: black">
-            <b>Price: </b>{{product.price}}/-
+            <b>Price: </b> {{product.price}}/-
           </div>
           <div class="mdl-card__actions mdl-card--border">
             <a style="background-color:#755139FF; color:#F2EDD7FF" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" [routerLink]="['/detail', product._id]" >

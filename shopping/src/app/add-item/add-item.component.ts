@@ -14,7 +14,7 @@ const URL = "http://66.70.179.133:8808/codezeros/uploadFile/common"
 })
 export class AddItemComponent implements OnInit {
 
-  categories = ['Laptop','Mobile'];
+  categories = ['Laptop','Mobile','Tablet','Desktop'];
   categoryHasError = true;
   productForm: FormGroup;
   url: any;

@@ -27,6 +27,7 @@
     "jquery": "^3.4.0",
     "ng-recaptcha": "^4.2.1",
     "ngx-pagination": "^3.2.1",
+    "ngx-slick": "^0.2.1",
     "ngx-toastr": "^10.0.2",
     "rxjs": "~6.3.3",
     "sweetalert2": "^8.8.2",

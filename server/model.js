@@ -51,7 +51,7 @@ const productSchema = new Schema({
     },
     category:{
         type:String, 
-        enum:['Laptop','Mobile']
+        enum:['Laptop','Mobile','Tablet','Desktop']
     },
     feature:{
         type:String

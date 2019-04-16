@@ -27,6 +27,7 @@ import { UpdateprofileComponent } from './updateprofile/updateprofile.component'
 import { OrdersComponent } from './orders/orders.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  
 import { ToastrModule } from 'ngx-toastr';
+import { SlickModule } from 'ngx-slick';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { ToastrModule } from 'ngx-toastr';
     RecaptchaModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    SlickModule.forRoot()
   ],
   providers: [UserService, AuthGuard],
   bootstrap: [AppComponent]
