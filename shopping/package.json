@@ -24,7 +24,7 @@
     "axios": "^0.18.0",
     "core-js": "^2.5.4",
     "firebase": "^5.9.0",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "ng-recaptcha": "^4.2.1",
     "ngx-pagination": "^3.2.1",
     "ngx-slick": "^0.2.1",
